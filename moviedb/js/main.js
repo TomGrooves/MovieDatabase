@@ -103,9 +103,6 @@ console.log("closing sir!")
 var parentDiv
 
 function openModal(elem){
-console.log("opening sir!")
-console.log(modal.style.display);
-
 parentDiv = elem.parentNode;
 var id = parentDiv.getAttribute("id");
 var idUrl =  `https://api.themoviedb.org/3/movie/${id}?api_key=${key}`
@@ -115,10 +112,6 @@ console.log(id)
         modal.style.display = "block";
         getModalData(idUrl);
     }
-}
-
-function createIframe(video) {
-    const videoKey = (video && video.key) || "Error";
 }
 
 function start(){
