@@ -49,6 +49,7 @@ function saveAllData(data){
     arrConst.push(data.results);
     if (doneLoading){
         console.log("Setting local storage item");
+        runCurtainAnim();
         localStorage.setItem('ChristmasMovies', JSON.stringify(arrConst));
     }
 }

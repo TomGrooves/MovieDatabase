@@ -5,14 +5,15 @@ const container = document.getElementById("movie-container");
 const searchcontainer = document.getElementById("movie-searchable");
 const maincontainer = document.getElementById("container");
 let modal = document.getElementById("modal");
-let loading = document.getElementById("loading");
+let loading = document.getElementById("dirboard");
+let boardanim = document.getElementById("boardanim");
+let loadtext = document.getElementById("loadtext");
 let blocker = document.getElementById("blocker");
 let savedData;
 let pagenr = 1;
 let parentDiv;
 let rdy = true;
 let doneLoading = false;
-
 
 // Creates the image content.
 function createImgCont(imageUrl, id){
@@ -105,6 +106,7 @@ if (localStorage.getItem('ChristmasMovies')){
     getAllData();
     loading.style.display = "none";
     doneLoading = true;
+    runCurtainAnim();
 }
 else{
     setTimeout(function () {
@@ -113,12 +115,17 @@ else{
             getData(urlTest)
             pagenr++;
             console.log(pagenr);
+            result = Math.round(getPct(pagenr, 67));
+            loadtext.innerText = "Loading " + result + "%";
             fetchAllChristmasMovies();
         }
         if (pagenr >= 67){
             doneLoading = true;
-            loading.style.display = "none";
             getAllData();
+            setTimeout(() => {
+                loading.style.display = "none";
+                displayTopMovies();
+            }, 1500);
         }
         }, 255)
     }
@@ -197,17 +204,24 @@ function displayTopMovies(){
     }
 }
 
+function runCurtainAnim(){
+    let left = document.getElementById("leftside");
+    let right = document.getElementById("rightside");
+
+    boardanim.style.animationPlayState = "running";    
+    
+        left.style.animationPlayState = "running";
+        right.style.animationPlayState = "running";
+}
+
+function getPct(param, max){
+    var pct = (param/max) * 100;
+    return pct;
+}
+
+/* 
+let result = getPct(6.6, 66);
+console.log(result + "%"); */
+
 // Run start on startup.
 start();
-
-
-
-// TEST STUFF
-let testArr = ["some", "man", "named", "arthur"];
-let myTarget1 = "some";
-let myTarget2 = "man";
-
-function findInArray(arr, target){
-y = target;
-result = arr.find(x => x == y);
-return result;}
