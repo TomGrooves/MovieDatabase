@@ -1,5 +1,4 @@
 html {
-  scroll-behavior: smooth;
   background-color: #111;
 }
 
@@ -11,6 +10,11 @@ html {
 @font-face {
   font-family: "Russel";
   src: url("../fonts/RussellRg.otf");
+}
+
+body {
+  scroll-behavior: smooth;
+  min-height: 100vh;
 }
 
 * {
@@ -77,8 +81,8 @@ nav h3, nav h4, nav h5 {
 
 nav .form-control {
   width: 50%;
-  height: 40px;
-  font-size: 1.3vw;
+  height: 6vh;
+  font-size: 1.5vw;
   font-family: 'Nunito', sans-serif;
   margin: auto;
   padding: 12px;
@@ -88,12 +92,15 @@ nav .form-control {
 nav .form-group {
   margin: 0;
   margin-bottom: 5%;
+  margin-top: 3%;
 }
 
 nav input {
   background-color: #111;
   border: solid 2px white;
   color: white;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 nav input::-webkit-input-placeholder {
@@ -112,15 +119,19 @@ nav input::placeholder {
   color: white;
 }
 
+nav input:focus {
+  background-color: white;
+  color: black;
+}
+
 nav .btn {
   width: 10%;
-  height: 40px;
+  height: 6vh;
   background-color: #111;
   color: white;
   border: solid 2px white;
-  font-size: 1.3vw;
+  font-size: 1.5vw;
   text-align: center;
-  margin-top: 4.6%;
   font-family: 'Nunito', sans-serif;
   cursor: pointer;
   -webkit-transition: all 0.4s ease;
@@ -380,14 +391,6 @@ footer h3 {
   grid-area: rating;
 }
 
-.close {
-  -ms-grid-row: 1;
-  -ms-grid-column: 5;
-  grid-area: close;
-  position: relative;
-  font-size: 2vw;
-}
-
 .modalcontent {
   display: -ms-grid;
   display: grid;
@@ -611,6 +614,14 @@ footer h3 {
 }
 
 .modalcontent .close {
+  -ms-grid-row: 1;
+  -ms-grid-column: 5;
+  grid-area: close;
+  color: white;
+  position: relative;
+  font-size: 2vw;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
   cursor: pointer;
 }
 
@@ -666,8 +677,10 @@ footer h3 {
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 6px;
+  gap: 4px;
   margin: auto;
+  margin-bottom: 2.5%;
+  width: 90%;
 }
 
 @media screen and (max-width: 1600px) {
@@ -703,10 +716,10 @@ footer h3 {
   background-position: center;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
-  width: 450px;
-  height: 675px;
+  width: 100%;
+  height: 650px;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
 }
 
 .imagecontainer:hover {

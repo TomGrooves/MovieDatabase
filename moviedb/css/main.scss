@@ -1,7 +1,6 @@
 $maincolor: #111;
 
 html{
-    scroll-behavior: smooth;
     background-color: #111;
 }
 
@@ -15,6 +14,10 @@ html{
     src: url("../fonts/RussellRg.otf");
 }
     
+body{
+    scroll-behavior: smooth;
+    min-height:100vh;
+}
 
 *{
     box-sizing: border-box;
@@ -23,7 +26,7 @@ html{
 }
 
 .headline{
-    color: red;
+    color:red;
     font-size:8.59vw;
     margin-left: 2%;
     font-family: frontage;
@@ -65,8 +68,8 @@ nav{
 
     .form-control{
         width: 50%;
-        height: 40px;
-        font-size: 1.3vw;
+        height: 6vh;
+        font-size: 1.5vw;
         font-family: 'Nunito', sans-serif;
         margin: auto;
         padding: 12px;
@@ -76,27 +79,33 @@ nav{
     .form-group{
         margin:0;
         margin-bottom: 5%;
+        margin-top:3%;
     }
 
     input{
         background-color:$maincolor;
         border:solid 2px white;
         color:white;
+        transition:all 0.5s ease;
     }
 
     input::placeholder{
         color:white;
     }
 
+    input:focus{
+        background-color: white;
+        color:black;
+    }
+
     .btn{
         width: 10%;
-        height: 40px;
+        height:6vh;
         background-color: #111;
         color: white;
         border: solid 2px white;
-        font-size: 1.3vw;
+        font-size: 1.5vw;
         text-align: center;
-        margin-top: 4.6%;
         font-family: 'Nunito', sans-serif;
         cursor: pointer;
         transition: all 0.4s ease;
@@ -267,11 +276,7 @@ footer{
 .rating{
     grid-area: rating;
 }
-.close{
-    grid-area: close;
-    position: relative;
-    font-size: 2vw;
-}
+
 
 .modalcontent{
     display: grid;
@@ -444,10 +449,15 @@ footer{
             }
     }
 }
-    .close{
-        cursor: pointer;
-    }
-
+.close{
+    grid-area: close;
+    color:white;
+    position: relative;
+    font-size: 2vw;
+    transition:all 0.2s ease;    
+    cursor: pointer;
+}
+ 
 }
 
 .top-movies{
@@ -498,8 +508,10 @@ footer{
     padding: 20px;
     display:grid; 
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 6px;
+    gap: 4px;
     margin:auto;
+    margin-bottom: 2.5%;
+    width:90%;
 
     @media screen and (max-width: 1600px) {
         grid-template-columns: 1fr 1fr 1fr;    
@@ -524,11 +536,12 @@ footer{
     background-color:$maincolor;
     background-position: center;
     transition: all 0.4s;
-    width: 450px;
-    height: 675px;
+    width: 100%;
+    height: 650px;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
+
 
 .imagecontainer:hover{
     transform:scale(1.07);

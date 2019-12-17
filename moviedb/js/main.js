@@ -41,7 +41,7 @@ function createModalContent(name, overview, release, videokey, runtime, actors, 
     tempDiv.classList.add("modalcontent");
     tempDiv.setAttribute('id', "modalcontent");
     
-    const closeElm = `<span class="close" onclick="closeModal()">X</span>`;
+    const closeElm = `<i onclick="closeModal()" class="close fa fa-times"></i>`;
     if (!name == "") {titleElm = `<h4 class="title">${name}</h4>`;}
     if (!overview == "") {descElm = `<div class="descrip"><h4>Description:</h4><p>${overview}</p></div>`;}
     if (!release == "") {releaseElm = `<div class="release"><h4>Release date:</h4><p> ${release}</p><br><h4 class="runtime">Runtime:</h4><p>${runtime} min</p></div>`;}
