@@ -8,32 +8,36 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
     <title>MovieDB</title>
 </head>
-<!--COMMENT TEST TEST TEST!-->
 <body>
+<!--Top graphic-->
 <div class="topgraphic">
-    <img id="ribbon-left" alt="Christmas decoration" src="svg/ribbons2.png">
-    <figure class="ball"><img id="ball1" alt="Christmas decoration" src="svg/ball.png"><p class="movieletter m-l">M</p></figure>
-    <figure class="ball"><img id="ball2" class="ball" alt="Christmas decoration" src="svg/ball.png"><p class="o-l movieletter">O</p></figure>
-    <figure class="ball"><img id="ball3" class="ball" alt="Christmas decoration" src="svg/ball.png"><p class="movieletter v-l">V</p></figure>
-    <figure class="ball"><img id="ball4" class="ball" alt="Christmas decoration" src="svg/ball.png"><p class="movieletter i-l">I</p></figure>
-    <figure class="ball"><img id="ball5" class="ball" alt="Christmas decoration" src="svg/ball.png"><p class="movieletter e-l">E</p></figure>
-    <figure class="ball"><img id="ball6" class="ball" alt="Christmas decoration" src="svg/ball.png"><p class="movieletter s-l">S</p></figure>
-    <img id="ribbon-right" alt="Christmas decoration" src="svg/ribbons2.png">
+    <img id="ribbon-left" alt="Christmas decoration" src="assets/ribbons2.png">
+    <figure class="ball"><img id="ball1" alt="Christmas decoration" src="assets/ball.png"><p class="movieletter m-l">M</p></figure>
+    <figure class="ball"><img id="ball2" class="ball" alt="Christmas decoration" src="assets/ball.png"><p class="o-l movieletter">O</p></figure>
+    <figure class="ball"><img id="ball3" class="ball" alt="Christmas decoration" src="assets/ball.png"><p class="movieletter v-l">V</p></figure>
+    <figure class="ball"><img id="ball4" class="ball" alt="Christmas decoration" src="assets/ball.png"><p class="movieletter i-l">I</p></figure>
+    <figure class="ball"><img id="ball5" class="ball" alt="Christmas decoration" src="assets/ball.png"><p class="movieletter e-l">E</p></figure>
+    <figure class="ball"><img id="ball6" class="ball" alt="Christmas decoration" src="assets/ball.png"><p class="movieletter s-l">S</p></figure>
+    <img id="ribbon-right" alt="Christmas decoration" src="assets/ribbons2.png">
 </div>
+<!--Top nav with searchbar-->
     <nav><h3 class="headline">The Movie Database</h3>       
         <div class="form-group">
             <input type="text" class="form-control" id="inputemail" aria-describedby="emailHelp" placeholder="Search.."/>
             <button class="btn" onclick="searchData()" id="search">Search</button>
         </div>
     </nav>
+<!-- All the movie content comes here-->
     <div class="blocker" id="blocker"></div>
     <div id="container" class="container">
         <div id="loading" class="loading">LOADING.....</div>
         <div id="movie-searchable"></div>
         <div id="movie-container"></div>
     </div>
+<!-- Modal content-->
     <div class="modal" id="modal">
     </div>
+<!-- Footer-->
     <footer><h3>Made with the free API at <a href="https://www.themoviedb.org/">The Movie DB</a> & Christmas vector created by pikisuperstar at <a href="https://www.freepik.com/free-photos-vectors/christmas">www.freepik.com</a></h3></footer>
     <script src="js/api.js"></script>
     <script src="js/main.js"></script>

@@ -1,3 +1,4 @@
+// Declare all the variables needed
 const search = document.getElementById("search");
 const input = document.getElementById("inputemail");
 const container = document.getElementById("movie-container");
@@ -12,26 +13,28 @@ let parentDiv;
 let rdy = true;
 let doneLoading = false;
 
-function createImgCont(imageUrl, id, name, rating){
+
+// Creates the image content.
+function createImgCont(imageUrl, id){
     const tempDiv = document.createElement("div");
     tempDiv.classList.add("imagecontainer");
     tempDiv.setAttribute('id', id);
     tempDiv.setAttribute("onclick", "openModal(this)");
 
+    // Checks if there is an imageUrl, else dont insert that title
 if (imageUrl){
     if (imageUrl.includes("/")){
-     //   const movieElm = `<img src="https://image.tmdb.org/t/p/w500${imageUrl}" alt="movie${id}" data-movie-id="${id}">`;
      let movieElm = document.createElement("div");
      movieElm.classList.add("movieposter");
     insert(movieElm, tempDiv);
      tempDiv.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500${imageUrl}')`;
-    // tempDiv.innerHTML = movieElm;
-        //tempDiv.style.background = `https://image.tmdb.org/t/p/w500${imageUrl}`;
         return movieElm;
         }
     }
 }
 
+// Create the modal content by taking name, description, videokey, runtime, actors, producers and rating. 
+// Appends these elements to a div and returns it. 
 function createModalContent(name, overview, release, videokey, runtime, actors, producer, rating){
     const tempDiv = document.createElement("div");
     tempDiv.classList.add("modalcontent");
@@ -50,6 +53,7 @@ function createModalContent(name, overview, release, videokey, runtime, actors, 
     return tempDiv;
 }
 
+// Loops through the first 5 actors, and returns them in a div. 
 function setupActors(actors){
     let holder = "";
     for (let y = 0; y < 5; y++){
@@ -61,14 +65,17 @@ function setupActors(actors){
     return holder; 
 }
 
+// Clear modal
 function clearModal(){
     modal.innerHTML = "";
 }
 
+// Appends whatever to whatever.
 function insert(dest,elm){
     dest.append(elm);
 }
 
+// Search through all data in the array and look for the target search word with includes. 
 function searchData(){
    if (doneLoading){
 
@@ -88,6 +95,9 @@ function searchData(){
     }
 }
 
+//Get local storage and if localstorage is not set, then 
+//loop through each page and add those 20 results to the array.
+//once done, save all data.  
 function fetchAllChristmasMovies(){
 
 if (localStorage.getItem('ChristmasMovies')){
@@ -114,10 +124,12 @@ else{
     }
 }
 
+// Reset input value
 function resetInput(){
     input.value = "";
 }
 
+// Clear screen by removing everything in container
 function clearScreen(){
     container.innerText = "";
     if (document.getElementById("top-movies")){
@@ -125,6 +137,7 @@ function clearScreen(){
     }
 }
 
+// Close modal
 function closeModal(){
     clearModal();
     if (modal.style.display == "block"){
@@ -133,6 +146,8 @@ function closeModal(){
     }
 }
 
+// Open modal, upon opening, gets the ID of the element clicked and sends that 
+// with a fetch to get the modal content for that particular movie
 function openModal(elem){
 var id = elem.getAttribute("id");
 var idUrl =  `https://api.themoviedb.org/3/movie/${id}?api_key=${key}&append_to_response=videos,credits`
@@ -144,12 +159,13 @@ var idUrl =  `https://api.themoviedb.org/3/movie/${id}?api_key=${key}&append_to_
     }
 }
 
+// Removes an element from the document
 function removeElement(elementId) {
-    // Removes an element from the document
     var element = document.getElementById(elementId);
     element.parentNode.removeChild(element);
 }
 
+// Start runs once every time the page is refreshed
 function start(){
     let somemodal = document.getElementById("modal");
     somemodal.style.display = "none";
@@ -160,6 +176,8 @@ function start(){
     }
 }
 
+// Loop through the entire array and get all movies 
+// with more then 30k popularity (eg. the most popular movies).
 function displayTopMovies(){
     dataArr = getAllData();
     let temp = document.createElement("div");
@@ -178,8 +196,8 @@ function displayTopMovies(){
         }
     }
 }
-//dataArr[i][x].vote_average >= 9.5 || dataArr[i][x].vote_count >= 8000
 
+// Run start on startup.
 start();
 
 

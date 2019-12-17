@@ -1,5 +1,7 @@
 const key ="7edb637499f19f042190fdac6c5ae5c3";
 let arrConst = [];
+
+// Function to fetch the data from the url the function takes as a parameter
 async function getData(param) 
 {
     fetch(param) 
@@ -10,6 +12,7 @@ async function getData(param)
     });
 }
 
+// Function to fetch all data about a specific title for modal data.
 async function getModalData(param) {
     fetch(param) 
     .then(response => response.json()) 
@@ -41,6 +44,7 @@ else if (dataset.credits.crew[0] == null){
     });
 }
 
+// Function to save all data to localstorage after it has been loaded first time.
 function saveAllData(data){
     arrConst.push(data.results);
     if (doneLoading){
@@ -49,6 +53,7 @@ function saveAllData(data){
     }
 }
 
+// Function to load all saved data from localstorage and return it back to whatever called it.
 function getAllData(){
     var allData = JSON.parse(localStorage.getItem('ChristmasMovies'));
     console.log(allData);
