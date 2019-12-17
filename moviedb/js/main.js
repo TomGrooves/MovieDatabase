@@ -2,71 +2,63 @@ const search = document.getElementById("search");
 const input = document.getElementById("inputemail");
 const container = document.getElementById("movie-container");
 const searchcontainer = document.getElementById("movie-searchable");
+const maincontainer = document.getElementById("container");
 let modal = document.getElementById("modal");
+let loading = document.getElementById("loading");
+let blocker = document.getElementById("blocker");
 let savedData;
-const key ="7edb637499f19f042190fdac6c5ae5c3";
-
-
-async function getData(param) 
-{
-    fetch(param) 
-    .then(response => response.json()) 
-    .then(data => {
-     dataset = data;
-        logDataset(dataset);
-    });
-}
-
-async function getModalData(param) 
-{
-    fetch(param) 
-    .then(response => response.json()) 
-    .then(data => {
-     dataset = data;
-     console.log(dataset);
-     insert(modal, createModalContent(dataset.poster_path, dataset.title, dataset.overview, dataset.release_date));
-    });
-}
-
-function logDataset(data){
-    savedData = data;
-    insertImages(savedData);
-}
-
-function insertImages(data){
-    console.log(data);
-     for (var i = 0; i < data.results.length; i++){
-         if (!data.results[i].poster_path == ""){
-         insert(container, createImgCont(data.results[i].poster_path, data.results[i].id, data.results[i].title, data.results[i].vote_average));
-         }
-     }
-}
+let pagenr = 1;
+let parentDiv;
+let rdy = true;
+let doneLoading = false;
 
 function createImgCont(imageUrl, id, name, rating){
     const tempDiv = document.createElement("div");
     tempDiv.classList.add("imagecontainer");
     tempDiv.setAttribute('id', id);
-    const movieElm = `<img src="https://image.tmdb.org/t/p/w500/${imageUrl}" alt="" data-movie-id="${id}">`;
-    const titleElm = `<h4 class="title">${name}</h4>`
-    const ratingElm = `<h5 class="rating">Rating: ${rating}</h5>`
-    const btnElm = `<span class="readmore" onclick="openModal(this)">Read more</span>`
-    tempDiv.innerHTML = titleElm + movieElm +ratingElm + btnElm;
-    return tempDiv;
+    tempDiv.setAttribute("onclick", "openModal(this)");
+
+if (imageUrl){
+    if (imageUrl.includes("/")){
+     //   const movieElm = `<img src="https://image.tmdb.org/t/p/w500${imageUrl}" alt="movie${id}" data-movie-id="${id}">`;
+     let movieElm = document.createElement("div");
+     movieElm.classList.add("movieposter");
+    insert(movieElm, tempDiv);
+     tempDiv.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500${imageUrl}')`;
+    // tempDiv.innerHTML = movieElm;
+        //tempDiv.style.background = `https://image.tmdb.org/t/p/w500${imageUrl}`;
+        return movieElm;
+        }
+    }
 }
 
-function createModalContent(imageUrl, name, overview, release){
-    clearModal();
+function createModalContent(name, overview, release, videokey, runtime, actors, producer, rating){
     const tempDiv = document.createElement("div");
     tempDiv.classList.add("modalcontent");
     tempDiv.setAttribute('id', "modalcontent");
-    const movieElm = `<img src="https://image.tmdb.org/t/p/w500/${imageUrl}">`;
-    const titleElm = `<h4 class="title">${name}</h4>`
-    const descElm = `<h5 class="overview">Description:</h5><br><p>${overview}</p>`
-    const releaseElm = `<h5 class="overview">Release date: ${release}</h5>`
-    const closeElm = `<span class="close" onclick="closeModal()">X</span>`
+    
+    const closeElm = `<span class="close" onclick="closeModal()">X</span>`;
+    if (!name == "") {titleElm = `<h4 class="title">${name}</h4>`;}
+    if (!overview == "") {descElm = `<div class="descrip"><h4>Description:</h4><p>${overview}</p></div>`;}
+    if (!release == "") {releaseElm = `<div class="release"><h4>Release date:</h4><p> ${release}</p><br><h4 class="runtime">Runtime:</h4><p>${runtime} min</p></div>`;}
+    if (!videokey == "") {iframeElm = `<iframe class="tube" src="https://www.youtube.com/embed/${videokey}"></iframe>`;}
+    if (!actors == "") {actorsElm = `<div class="actor actorwrapper"><h4>Actors: </h4><p>${setupActors(actors)}</p></div>`;}
+    if (!producer == ""){producerElm =`<div class="producer"><h4>Producer:</h4><p>${producer}<p></div>`}
+    if (!rating == "") {ratingElm = `<div class="rating"><h4>Rating</h4> <p>${rating}/10</p></div>`;}
     console.log("created all modal content");
-    tempDiv.innerHTML = movieElm + titleElm + descElm + releaseElm + closeElm ;
+    tempDiv.innerHTML = titleElm + descElm + releaseElm + iframeElm  + actorsElm + closeElm + ratingElm + producerElm;
     return tempDiv;
+}
+
+function setupActors(actors){
+    let holder = "";
+    for (let y = 0; y < 5; y++){
+        if (actors[y]){
+        let thisActor = `<div class="actor">${actors[y].name} as ${actors[y].character}</div>`
+        holder += thisActor;
+        }
+    }
+    return holder; 
 }
 
 function clearModal(){
@@ -78,45 +70,126 @@ function insert(dest,elm){
 }
 
 function searchData(){
-    resetCanvas();
-        let searchTarget = input.value;
-        console.log(searchTarget); 
-        let urlSearch = `https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${searchTarget}`
-        getData(urlSearch);
+   if (doneLoading){
+
+    clearScreen(); 
+   let searchTarget = input.value;
+        let dataArr = getAllData()
+        for (var i = 0; i < dataArr.length; i++){
+            for (var x = 0; x < dataArr[i].length; x++){
+            if (dataArr[i][x].title.toLowerCase().includes(searchTarget.toLowerCase())){
+             insert(container, createImgCont(dataArr[i][x].poster_path, dataArr[i][x].id, dataArr[i][x].title, dataArr[i][x].vote_average));
+            } 
+            else{
+                console.log("not found");
+            }
+        }
+        } 
+    }
+}
+
+function fetchAllChristmasMovies(){
+
+if (localStorage.getItem('ChristmasMovies')){
+    console.log("Data loaded from local storage");
+    getAllData();
+    loading.style.display = "none";
+    doneLoading = true;
+}
+else{
+    setTimeout(function () {
+        if (pagenr < 67) {           
+            let urlTest = `http://api.themoviedb.org/3/discover/movie?api_key=${key}&with_keywords=207317&page=${pagenr}`;
+            getData(urlTest)
+            pagenr++;
+            console.log(pagenr);
+            fetchAllChristmasMovies();
+        }
+        if (pagenr >= 67){
+            doneLoading = true;
+            loading.style.display = "none";
+            getAllData();
+        }
+        }, 255)
+    }
 }
 
 function resetInput(){
     input.value = "";
 }
 
-function resetCanvas(){
+function clearScreen(){
     container.innerText = "";
+    if (document.getElementById("top-movies")){
+        removeElement("top-movies");
+    }
 }
 
 function closeModal(){
-console.log("closing sir!")
+    clearModal();
     if (modal.style.display == "block"){
         modal.style.display = "none";
+        blocker.style.display = "none";
     }
 }
 
-var parentDiv
-
 function openModal(elem){
-parentDiv = elem.parentNode;
-var id = parentDiv.getAttribute("id");
-var idUrl =  `https://api.themoviedb.org/3/movie/${id}?api_key=${key}`
-console.log(id)
+var id = elem.getAttribute("id");
+var idUrl =  `https://api.themoviedb.org/3/movie/${id}?api_key=${key}&append_to_response=videos,credits`
 
     if (modal.style.display == "none"){
         modal.style.display = "block";
+        blocker.style.display = "block";
         getModalData(idUrl);
     }
+}
+
+function removeElement(elementId) {
+    // Removes an element from the document
+    var element = document.getElementById(elementId);
+    element.parentNode.removeChild(element);
 }
 
 function start(){
     let somemodal = document.getElementById("modal");
     somemodal.style.display = "none";
+    blocker.style.display = "none";
+    fetchAllChristmasMovies();
+    if (doneLoading){
+        displayTopMovies();
+    }
 }
 
+function displayTopMovies(){
+    dataArr = getAllData();
+    let temp = document.createElement("div");
+    temp.setAttribute("id", "top-movies");
+    let headline = `<h2 class="top-movies">Most popular: </h2>`;
+    temp.innerHTML = headline;
+    maincontainer.prepend(temp);
+    for (var i = 0; i < dataArr.length; i++){
+        for (var x = 0; x < dataArr[i].length; x++){
+            if (dataArr[i][x].popularity >= 30.000){
+            insert(container, createImgCont(dataArr[i][x].poster_path, dataArr[i][x].id, dataArr[i][x].title, dataArr[i][x].vote_average));
+            }
+            else{
+                console.log("not found");
+            }
+        }
+    }
+}
+//dataArr[i][x].vote_average >= 9.5 || dataArr[i][x].vote_count >= 8000
+
 start();
+
+
+
+// TEST STUFF
+let testArr = ["some", "man", "named", "arthur"];
+let myTarget1 = "some";
+let myTarget2 = "man";
+
+function findInArray(arr, target){
+y = target;
+result = arr.find(x => x == y);
+return result;}

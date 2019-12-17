@@ -1,18 +1,161 @@
+$maincolor: #111;
+
+@font-face {
+    font-family: "Frontage";
+    src: url("../fonts/FrontageCondensedOutline/FrontageCondensed-Outline.otf");}
+    
 *{
     box-sizing: border-box;
     margin:0;
     padding:0;
 }
 
+.headline{
+    color: red;
+    font-size: 5vw;
+    margin-left: 2%;
+    font-family: frontage;
+    font-weight: 500;
+}
+
+nav{
+    
+    display:grid;
+    grid-template-columns:  1fr 1fr;
+    h3, h4, h5{
+        color:white;
+    }
+
+    .form-control{
+        width: 690px;
+        height: 40px;
+        font-size: 1.3vw;
+        font-family: 'Nunito', sans-serif;
+        margin: auto;
+        padding: 12px;
+    }
+
+    input{
+        background-color:$maincolor;
+        border:solid 2px white;
+        color:white;
+    }
+
+    input::placeholder{
+        color:white;
+    }
+
+    .btn{
+        width: 120px;
+        height: 40px;
+        background-color: #111;
+        color: white;
+        border: solid 2px white;
+        font-size: 1.3vw;
+        text-align: center;
+        margin-top: 4.6%;
+        font-family: 'Nunito', sans-serif;
+        cursor: pointer;
+        transition: all 0.4s ease;
+    }    
+
+    .btn:hover{
+        background-color:white;
+        color: black;
+        border: solid 2px white;
+    }
+}
+
 body{
-    background-color: antiquewhite;
+    background-color:$maincolor;
+    height: 100vh;
+    overflow-x:hidden;
+}
+
+.topgraphic{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.movieletter{
+   margin-left:2%;
+   animation:wobbletext;
+   animation-duration: 6s;
+   animation-fill-mode: both;
+   animation-iteration-count: infinite;
+   animation-timing-function: linear; 
+   font-size: 2.2vw;
+   font-family: frontage;
+   font-weight: 500;
+   color:gold;
+}
+
+.m-l{animation-delay:1.2s}
+.o-l{animation-delay:2.5s}
+.v-l{animation-delay:1s}
+.i-l{animation-delay:0.7s}
+.e-l{animation-delay:1.9s}
+.s-l{animation-delay:1.2s}
+
+
+
+
+#ball1{
+    animation-delay: 1.2s;
+}
+#ball2{
+    animation-delay: 2.5s;
+}
+#ball3{
+    animation-delay: 1s;
+}
+#ball4{
+    animation-delay: 0.7s;
+}
+#ball5{
+    animation-delay: 1.9s;
+}
+#ball6{
+    animation-delay: 1.2s;
+}
+.ball{
+    display:grid;
+    grid-template-rows: 1fr 1fr;
+    img{
+    width: 60%;
+    margin-left:2%;
+    animation:wobble;
+    animation-duration: 6s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    }
+}
+
+#ribbon-left{
+    transform: translate(-115px, 20px) rotate(-25deg);
+}
+#ribbon-right{
+    transform: translate(135px, 25px)rotate(25deg);
+}
+
+footer{
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    h3{
+        font-family: 'Nunito', sans-serif;
+        color:white;
+        text-align: center;
+        font-size: 0.8vw;
+    }
 }
 
 html{
     scroll-behavior: smooth;
+    background-color: #333;
 }
-
-
 
 .hidden{
     display:none;
@@ -22,16 +165,150 @@ html{
     display:block;
 }
 
+.title{
+    grid-area: title;
+}
+.descrip{
+    grid-area: descrip;
+}
+
+.blocker{
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top:0;
+    left:0;
+
+}
+
+.tube {
+    grid-area: tube;
+    width: 500px;
+    height: 300px;
+    border: solid 2px red;
+}
+.producer {
+    grid-area: prod;
+}
+.actor{
+    grid-area: actor;
+}
+.runtime{
+    grid-area: runtime;
+}
+.release{
+    grid-area: release;
+}
+
+.rating{
+    grid-area: rating;
+}
+.close{
+    grid-area: close;
+    position: relative;
+    font-size: 2vw;
+}
+
+.modalcontent{
+    display: grid;
+    grid-template-areas: 
+    "title title title close"
+    "descrip descrip tube tube"
+    "descrip descrip tube tube"
+    "actor actor release release"
+    "prod prod rating rating";
+    gap: 16px;
+    font-weight: 100;
+
+    .title{
+        font-size: 2.8vw;
+        font-family: frontage;
+        color:red;
+        font-weight: 600;
+    }
+
+    .descrip{
+        font-size: 1.8vw;
+        font-family: frontage;
+        p{
+            font-size: 1.05vw;
+            font-family: 'Nunito', sans-serif;
+        }
+    }
+
+    .rating{
+        font-size: 1.05vw;
+        font-family: 'Nunito', sans-serif;
+        h4{
+            font-size: 1.8vw;
+            font-family: frontage;
+        }
+    }
+    .producer{
+        font-size: 1.05vw;
+        font-family: 'Nunito', sans-serif;
+        h4{
+            font-size: 1.8vw;
+            font-family: frontage;
+        }
+    }
+
+    .actor{
+        font-size: 1.05vw;
+        font-family: 'Nunito', sans-serif;
+        h4{
+            font-size: 1.8vw;
+            font-family: frontage;
+        }
+    }
+
+    .runtime{
+        font-size: 1.05vw;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .release{
+        font-size: 1.05vw;
+        font-family: 'Nunito', sans-serif;
+        h4{
+            font-size: 1.8vw;
+            font-family: frontage;
+        }
+    }
+
+    .close{
+        cursor: pointer;
+    }
+
+    padding: 16px;
+    *{
+        margin: 2px;
+    }
+}
+
+.top-movies{
+    font-size: 3.6vw;
+    font-family: frontage;
+    margin-left: 5%;
+    color:red;
+    font-weight: 100;
+    margin-top: 2.5%;
+}
+
 .modal{
-    width: 80%;
+    background-color: $maincolor;
+    color: white;
+    width: 55%;
     height: auto;
-    position: absolute;
-    margin:12px;
+    position: fixed;
+    margin: 12px;
     padding: 12x;
-    left:10%;
-    top:25%;
-    background-color: white;
-    box-shadow: 7px 7px 7px -4px rgba(0,0,0,0.7);
+    left: 20%;
+    top: 5%;
+    box-shadow: 2px 3px 10px 2px rgba(0,0,0,0.7);
+
+
 
     #closemodal{
         font-size: 2.2vw;
@@ -39,6 +316,8 @@ html{
         position: absolute;
         bottom: 5%;
         left: 45%;
+        font-family: 'Nunito', sans-serif;
+        
     }
 }
 
@@ -47,23 +326,73 @@ html{
     display:grid; 
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 6px;
-    width: 80%;
     margin:auto;
+}
+
+.movieposter{
+    overflow:hidden;
 }
 
 .imagecontainer{
     margin:auto;
     box-shadow: 7px 7px 7px -4px rgba(0,0,0,0.7);
-    width: 220px;
-    height: 400px;
-    background-color: white;
-    *{
-        margin-left:5%;
+    background-color:$maincolor;
+    background-position: center;
+    transition: all 0.4s;
+    width: 450px;
+    height: 675px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* 
+img{
+    width: 100%;
+    height:auto;
+    margin:auto;
+    cursor: pointer;
+    transition: all 0.1s;
+    border: solid 3px rgba(0, 0, 0, 0);
+}
+ */
+.imagecontainer:hover{
+    transform:scale(1.07);
+    // border: solid 3px red;
+}
+
+.container{
+    background-color:$maincolor;
+}
+
+
+@keyframes zoom{
+    0%{
+        transform: scale(1)
+    }
+    100%{
+        transform: scale(1.05);
     }
 }
 
-img{
-    width: 200px;
-    height:auto;
-    margin:auto;
+@keyframes wobble{
+    0%{
+        transform:translateY(0px)
+    }
+    50%{
+        transform:translateY(-8px);
+    }
+    100%{
+        transform:translate(0px);
+    }
+}
+
+@keyframes wobbletext{
+    0%{
+        transform:translateX(26px) translateY(-62px);
+    }
+    50%{
+        transform:translateX(34px) translateY(-70px);
+    }
+    100%{
+        transform:translateX(26px) translateY(-62px);
+    }
 }
