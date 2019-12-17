@@ -778,8 +778,8 @@ html {
 }
 
 #loadtext {
-  -webkit-transform: translateY(565px) translateX(15%);
-          transform: translateY(565px) translateX(15%);
+  -webkit-transform: translateY(60vh) translateX(15%);
+          transform: translateY(60vh) translateX(15%);
   width: 67%;
   height: auto;
   margin: auto;
