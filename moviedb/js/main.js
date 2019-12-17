@@ -191,7 +191,7 @@ function displayTopMovies(){
     dataArr = getAllData();
     let temp = document.createElement("div");
     temp.setAttribute("id", "top-movies");
-    let headline = `<h2 class="top-movies">Most popular: </h2>`;
+    let headline = `<h2 class="top-movies">Most popular christmas movies ever made: </h2>`;
     temp.innerHTML = headline;
     maincontainer.prepend(temp);
     for (var i = 0; i < dataArr.length; i++){
@@ -206,6 +206,8 @@ function displayTopMovies(){
     }
 }
 
+// Gets curtain images and adds "running" property to css
+// Then after 3 secs displays all top rated movies
 function runCurtainAnim(){
     let left = document.getElementById("leftside");
     let right = document.getElementById("rightside");
@@ -217,14 +219,20 @@ function runCurtainAnim(){
         }, 3000);
 }
 
+
+// Get percentage of param and max value
 function getPct(param, max){
     var pct = (param/max) * 100;
     return pct;
 }
 
-/* 
-let result = getPct(6.6, 66);
-console.log(result + "%"); */
+function snow(){
+    setInterval(() => {
+        temp = document.createElement("img");
+        temp.src = "assets/"
+    }, 100);
+}
+
 
 // Run start on startup.
 start();

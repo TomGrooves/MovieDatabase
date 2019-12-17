@@ -1,6 +1,16 @@
+html {
+  scroll-behavior: smooth;
+  background-color: #111;
+}
+
 @font-face {
   font-family: "Frontage";
   src: url("../fonts/FrontageCondensedOutline/FrontageCondensed-Outline.otf");
+}
+
+@font-face {
+  font-family: "Russel";
+  src: url("../fonts/RussellRg.otf");
 }
 
 * {
@@ -12,23 +22,45 @@
 
 .headline {
   color: red;
-  font-size: 5vw;
+  font-size: 8.59vw;
   margin-left: 2%;
   font-family: frontage;
   font-weight: 500;
+  text-align: center;
+  margin-top: -5%;
+}
+
+@media screen and (max-width: 1600px) {
+  .headline {
+    margin-top: -15%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .headline {
+    margin-top: -20%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .headline {
+    margin-top: -30%;
+  }
 }
 
 nav {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
 }
 
 @media screen and (max-width: 1600px) {
   nav {
-    -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
   }
 }
 
@@ -44,12 +76,18 @@ nav h3, nav h4, nav h5 {
 }
 
 nav .form-control {
-  width: 80%;
+  width: 50%;
   height: 40px;
   font-size: 1.3vw;
   font-family: 'Nunito', sans-serif;
   margin: auto;
   padding: 12px;
+  margin-left: 20%;
+}
+
+nav .form-group {
+  margin: 0;
+  margin-bottom: 5%;
 }
 
 nav input {
@@ -75,7 +113,7 @@ nav input::placeholder {
 }
 
 nav .btn {
-  width: 120px;
+  width: 10%;
   height: 40px;
   background-color: #111;
   color: white;
@@ -106,6 +144,7 @@ body {
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  height: 39%;
 }
 
 .movieletter {
@@ -120,9 +159,9 @@ body {
           animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
           animation-timing-function: linear;
-  font-size: 2.2vw;
+  font-size: 2.3vw;
   font-family: frontage;
-  font-weight: 500;
+  font-weight: 600;
   color: gold;
 }
 
@@ -230,14 +269,14 @@ a:hover {
 
 #ribbon-left {
   width: 200%;
-  -webkit-transform: translate(-25%, 25%) rotate(-25deg);
-          transform: translate(-25%, 25%) rotate(-25deg);
+  -webkit-transform: translate(-20%, -20%);
+          transform: translate(-20%, -20%);
 }
 
 #ribbon-right {
   width: 200%;
-  -webkit-transform: translate(-25%, 25%) rotate(25deg);
-          transform: translate(-25%, 25%) rotate(25deg);
+  -webkit-transform: translate(-30%, -20%);
+          transform: translate(-30%, -20%);
 }
 
 footer {
@@ -254,11 +293,6 @@ footer h3 {
   font-size: 0.8vw;
 }
 
-html {
-  scroll-behavior: smooth;
-  background-color: #333;
-}
-
 .hidden {
   display: none;
 }
@@ -270,14 +304,14 @@ html {
 .title {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
-  -ms-grid-column-span: 3;
+  -ms-grid-column-span: 4;
   grid-area: title;
 }
 
 .descrip {
   -ms-grid-row: 2;
   -ms-grid-row-span: 2;
-  -ms-grid-column: 1;
+  -ms-grid-column: 3;
   -ms-grid-column-span: 2;
   grid-area: descrip;
 }
@@ -294,11 +328,24 @@ html {
 .tube {
   -ms-grid-row: 2;
   -ms-grid-row-span: 2;
-  -ms-grid-column: 3;
+  -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-area: tube;
-  width: 100%;
   border: solid 2px red;
+  height: 30vh;
+  width: 25vw;
+}
+
+@media screen and (max-width: 1600px) {
+  .tube {
+    width: 35vw;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .tube {
+    width: 45vw;
+  }
 }
 
 .producer {
@@ -335,7 +382,7 @@ html {
 
 .close {
   -ms-grid-row: 1;
-  -ms-grid-column: 4;
+  -ms-grid-column: 5;
   grid-area: close;
   position: relative;
   font-size: 2vw;
@@ -344,7 +391,7 @@ html {
 .modalcontent {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "title title title close" "descrip descrip tube tube" "descrip descrip tube tube" "actor actor release release" "prod prod rating rating";
+      grid-template-areas: "title title title title close" "tube tube descrip descrip ." "tube tube descrip descrip ." "actor actor release release ." "prod prod rating rating .";
   gap: 16px;
   font-weight: 100;
 }
@@ -570,10 +617,11 @@ html {
 .top-movies {
   font-size: 3.6vw;
   font-family: frontage;
-  margin-left: 5%;
+  text-align: center;
   color: red;
   font-weight: 100;
   margin-top: 2.5%;
+  margin-bottom: 2.5%;
 }
 
 .modal {
@@ -724,31 +772,31 @@ html {
 
 @-webkit-keyframes wobbletext {
   0% {
-    -webkit-transform: translateX(20%) translateY(-200%);
-            transform: translateX(20%) translateY(-200%);
+    -webkit-transform: translateX(23%) translateY(-53vh);
+            transform: translateX(23%) translateY(-53vh);
   }
   50% {
-    -webkit-transform: translateX(18%) translateY(-210%);
-            transform: translateX(18%) translateY(-210%);
+    -webkit-transform: translateX(21%) translateY(-55vh);
+            transform: translateX(21%) translateY(-55vh);
   }
   100% {
-    -webkit-transform: translateX(20%) translateY(-200%);
-            transform: translateX(20%) translateY(-200%);
+    -webkit-transform: translateX(23%) translateY(-53vh);
+            transform: translateX(23%) translateY(-53vh);
   }
 }
 
 @keyframes wobbletext {
   0% {
-    -webkit-transform: translateX(20%) translateY(-200%);
-            transform: translateX(20%) translateY(-200%);
+    -webkit-transform: translateX(23%) translateY(-53vh);
+            transform: translateX(23%) translateY(-53vh);
   }
   50% {
-    -webkit-transform: translateX(18%) translateY(-210%);
-            transform: translateX(18%) translateY(-210%);
+    -webkit-transform: translateX(21%) translateY(-55vh);
+            transform: translateX(21%) translateY(-55vh);
   }
   100% {
-    -webkit-transform: translateX(20%) translateY(-200%);
-            transform: translateX(20%) translateY(-200%);
+    -webkit-transform: translateX(23%) translateY(-53vh);
+            transform: translateX(23%) translateY(-53vh);
   }
 }
 
@@ -786,6 +834,8 @@ html {
   display: block;
   color: white;
   font-size: 4vw;
+  font-family: Frontage;
+  font-weight: 300;
 }
 
 .rightside {

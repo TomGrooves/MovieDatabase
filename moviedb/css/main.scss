@@ -1,9 +1,21 @@
 $maincolor: #111;
 
+html{
+    scroll-behavior: smooth;
+    background-color: #111;
+}
+
 @font-face {
     font-family: "Frontage";
-    src: url("../fonts/FrontageCondensedOutline/FrontageCondensed-Outline.otf");}
+    src: url("../fonts/FrontageCondensedOutline/FrontageCondensed-Outline.otf");
+}
+
+@font-face {
+    font-family: "Russel";
+    src: url("../fonts/RussellRg.otf");
+}
     
+
 *{
     box-sizing: border-box;
     margin:0;
@@ -12,19 +24,35 @@ $maincolor: #111;
 
 .headline{
     color: red;
-    font-size: 5vw;
+    font-size:8.59vw;
     margin-left: 2%;
     font-family: frontage;
     font-weight: 500;
+    text-align: center;
+    margin-top: -5%;
+
+
+    @media screen and (max-width: 1600px) {
+        margin-top: -15%    
+    }
+    
+    @media screen and (max-width: 1200px){
+        margin-top: -20%
+    }
+
+    @media screen and (max-width: 700px){
+        margin-top: -30%
+    }
+
 }
 
 nav{
-    
     display:grid;
-    grid-template-columns:  1fr 1fr;
+    grid-template-columns:1fr;
+    grid-template-rows: 1fr 1fr;
 
     @media screen and (max-width: 1600px) {
-        grid-template-columns: 1fr 1fr;    
+        grid-template-columns: 1fr;    
     }
     
     @media screen and (max-width: 1200px){
@@ -36,12 +64,18 @@ nav{
     }
 
     .form-control{
-        width: 80%;
+        width: 50%;
         height: 40px;
         font-size: 1.3vw;
         font-family: 'Nunito', sans-serif;
         margin: auto;
         padding: 12px;
+        margin-left: 20%;
+    }
+
+    .form-group{
+        margin:0;
+        margin-bottom: 5%;
     }
 
     input{
@@ -55,7 +89,7 @@ nav{
     }
 
     .btn{
-        width: 120px;
+        width: 10%;
         height: 40px;
         background-color: #111;
         color: white;
@@ -84,6 +118,7 @@ body{
 .topgraphic{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    height: 39%;
 }
 
 .movieletter{
@@ -93,9 +128,9 @@ body{
    animation-fill-mode: both;
    animation-iteration-count: infinite;
    animation-timing-function: linear; 
-   font-size: 2.2vw;
+   font-size: 2.3vw;
    font-family: frontage;
-   font-weight: 500;
+   font-weight: 600;
    color:gold;
 }
 
@@ -158,11 +193,11 @@ a:hover{
 
 #ribbon-left{
     width: 200%;
-    transform: translate(-25%, 25%) rotate(-25deg);
+    transform: translate(-20%, -20%);
 }
 #ribbon-right{
     width: 200%;
-    transform: translate(-25%, 25%) rotate(25deg);
+    transform: translate(-30%, -20%);
 }
 
 footer{
@@ -176,11 +211,6 @@ footer{
         text-align: center;
         font-size: 0.8vw;
     }
-}
-
-html{
-    scroll-behavior: smooth;
-    background-color: #333;
 }
 
 .hidden{
@@ -210,8 +240,16 @@ html{
 
 .tube {
     grid-area: tube;
-    width: 100%;
     border: solid 2px red;
+    height: 30vh;
+    width: 25vw;
+    @media screen and (max-width: 1600px) {  
+        width: 35vw;
+    }
+ 
+     @media screen and (max-width: 700px){
+        width: 45vw;
+    }
 }
 .producer {
     grid-area: prod;
@@ -238,11 +276,11 @@ html{
 .modalcontent{
     display: grid;
     grid-template-areas: 
-    "title title title close"
-    "descrip descrip tube tube"
-    "descrip descrip tube tube"
-    "actor actor release release"
-    "prod prod rating rating";
+    "title title title title close"
+    "tube tube descrip descrip ."
+    "tube tube descrip descrip ."
+    "actor actor release release ."
+    "prod prod rating rating .";
     gap: 16px;
     font-weight: 100;
 
@@ -415,10 +453,11 @@ html{
 .top-movies{
     font-size: 3.6vw;
     font-family: frontage;
-    margin-left: 5%;
+    text-align: center;
     color:red;
     font-weight: 100;
     margin-top: 2.5%;
+    margin-bottom: 2.5%;
 }
 
 .modal{
@@ -523,13 +562,13 @@ html{
 
 @keyframes wobbletext{
     0%{
-        transform:translateX(20%) translateY(-200%);
+        transform:translateX(23%) translateY(-53vh);
     }
     50%{
-        transform:translateX(18%) translateY(-210%);
+        transform:translateX(21%) translateY(-55vh);
     }
     100%{
-        transform:translateX(20%) translateY(-200%);
+        transform:translateX(23%) translateY(-53vh);
     }
 }
 
@@ -563,7 +602,6 @@ html{
     }
 }
 
-
 #loadtext{
     transform: translateY(60vh) translateX(15%);
     width: 67%;
@@ -572,6 +610,8 @@ html{
     display: block;
     color: white;
     font-size: 4vw;
+    font-family: Frontage;
+    font-weight: 300;
 }
 
 .rightside{
