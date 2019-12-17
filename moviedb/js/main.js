@@ -119,13 +119,15 @@ else{
             loadtext.innerText = "Loading " + result + "%";
             fetchAllChristmasMovies();
         }
-        if (pagenr >= 67){
+        if (pagenr == 67){
             doneLoading = true;
+            console.log("DONELOADING IS  " + doneLoading);
             getAllData();
+            runCurtainAnim();
             setTimeout(() => {
                 loading.style.display = "none";
-                displayTopMovies();
             }, 1500);
+            pagenr++;
         }
         }, 255)
     }
@@ -178,9 +180,9 @@ function start(){
     somemodal.style.display = "none";
     blocker.style.display = "none";
     fetchAllChristmasMovies();
-    if (doneLoading){
-        displayTopMovies();
-    }
+/*     if (doneLoading){
+        runCurtainAnim();
+    } */
 }
 
 // Loop through the entire array and get all movies 
@@ -207,11 +209,12 @@ function displayTopMovies(){
 function runCurtainAnim(){
     let left = document.getElementById("leftside");
     let right = document.getElementById("rightside");
-
     boardanim.style.animationPlayState = "running";    
-    
         left.style.animationPlayState = "running";
         right.style.animationPlayState = "running";
+        setTimeout(() => {
+            displayTopMovies();
+        }, 3000);
 }
 
 function getPct(param, max){

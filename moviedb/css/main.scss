@@ -22,12 +22,21 @@ nav{
     
     display:grid;
     grid-template-columns:  1fr 1fr;
+
+    @media screen and (max-width: 1600px) {
+        grid-template-columns: 1fr 1fr;    
+    }
+    
+    @media screen and (max-width: 1200px){
+        grid-template-columns: 1fr;
+    }
+
     h3, h4, h5{
         color:white;
     }
 
     .form-control{
-        width: 690px;
+        width: 80%;
         height: 40px;
         font-size: 1.3vw;
         font-family: 'Nunito', sans-serif;
@@ -78,7 +87,7 @@ body{
 }
 
 .movieletter{
-   margin-left:2%;
+   margin-left:25%;
    animation:wobbletext;
    animation-duration: 6s;
    animation-fill-mode: both;
@@ -96,9 +105,6 @@ body{
 .i-l{animation-delay:0.7s}
 .e-l{animation-delay:1.9s}
 .s-l{animation-delay:1.2s}
-
-
-
 
 #ball1{
     animation-delay: 1.2s;
@@ -120,10 +126,10 @@ body{
 }
 .ball{
     display:grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
     img{
-    width: 60%;
-    margin-left:2%;
+    width: 50%;
+    margin-left:25%;
     animation:wobble;
     animation-duration: 6s;
     animation-fill-mode: both;
@@ -132,11 +138,31 @@ body{
     }
 }
 
+a{
+    text-decoration-style: none;
+    text-decoration-color: none;
+    color:white;
+}
+
+a:visited{
+    color:red;
+}
+
+a:active{
+    color:white;
+}
+
+a:hover{
+    color:gold;
+}
+
 #ribbon-left{
-    transform: translate(-115px, 20px) rotate(-25deg);
+    width: 200%;
+    transform: translate(-25%, 25%) rotate(-25deg);
 }
 #ribbon-right{
-    transform: translate(135px, 25px)rotate(25deg);
+    width: 200%;
+    transform: translate(-25%, 25%) rotate(25deg);
 }
 
 footer{
@@ -184,8 +210,7 @@ html{
 
 .tube {
     grid-area: tube;
-    width: 500px;
-    height: 300px;
+    width: 100%;
     border: solid 2px red;
 }
 .producer {
@@ -221,21 +246,64 @@ html{
     gap: 16px;
     font-weight: 100;
 
+    @media screen and (max-width: 1600px) {  
+       gap: 8px;
+       padding: 8px;
+}
+
+    @media screen and (max-width: 700px){
+        gap: 4px;
+        padding: 4px;
+}
+
+    *{  
+        margin: 8px;
+        @media screen and (max-width: 1600px) {  
+            margin: 4px;
+    }
+        @media screen and (max-width: 700px){
+            padding: 4px;
+    }
+}
+    
     .title{
         font-size: 2.8vw;
         font-family: frontage;
         color:red;
         font-weight: 600;
-    }
 
-    .descrip{
+        @media screen and (max-width: 1600px) {  
+                font-size: 4vw;
+        }
+        
+        @media screen and (max-width: 700px){
+                font-size: 5vw;
+    }
+}
+
+    .descrip{            
         font-size: 1.8vw;
         font-family: frontage;
         p{
             font-size: 1.05vw;
             font-family: 'Nunito', sans-serif;
         }
+        @media screen and (max-width: 1600px) {
+            margin: 4px;    
+            font-size: 2vw;
+            p{
+                font-size: 1.5vw;
+            }
+        }
+        
+        @media screen and (max-width: 700px){
+            margin: 2px;
+            font-size: 3vw;
+            p{
+                font-size: 2.2vw;
+            }
     }
+}
 
     .rating{
         font-size: 1.05vw;
@@ -244,7 +312,20 @@ html{
             font-size: 1.8vw;
             font-family: frontage;
         }
+        @media screen and (max-width: 1600px) {
+            font-size: 1.5vw;
+            h4{
+                font-size: 2vw;
+            }
+        }
+        
+        @media screen and (max-width: 700px){
+            font-size: 2.2vw;
+            h4{
+                font-size: 3vw;
+            }
     }
+}
     .producer{
         font-size: 1.05vw;
         font-family: 'Nunito', sans-serif;
@@ -252,8 +333,20 @@ html{
             font-size: 1.8vw;
             font-family: frontage;
         }
+        @media screen and (max-width: 1600px) {
+            font-size: 1.5vw;
+            h4{
+                font-size: 2vw;
+            }
+        }
+        
+        @media screen and (max-width: 700px){
+            font-size: 2.2vw;
+            h4{
+                font-size: 3vw;
+            }
     }
-
+    }
     .actor{
         font-size: 1.05vw;
         font-family: 'Nunito', sans-serif;
@@ -261,13 +354,37 @@ html{
             font-size: 1.8vw;
             font-family: frontage;
         }
+        @media screen and (max-width: 1600px) {
+            font-size: 1.5vw;
+            h4{
+                font-size: 2vw;
+            }
+        }
+        
+        @media screen and (max-width: 700px){
+            font-size: 2.2vw;
+            h4{
+                font-size: 3vw;
+            }
     }
-
+}
     .runtime{
         font-size: 1.05vw;
         font-family: 'Nunito', sans-serif;
+        @media screen and (max-width: 1600px) {
+            font-size: 1.5vw;
+            h4{
+                font-size: 2vw;
+            }
+        }
+        
+        @media screen and (max-width: 700px){
+            font-size: 2.2vw;
+            h4{
+                font-size: 3vw;
+            }
     }
-
+}
     .release{
         font-size: 1.05vw;
         font-family: 'Nunito', sans-serif;
@@ -275,16 +392,24 @@ html{
             font-size: 1.8vw;
             font-family: frontage;
         }
+        @media screen and (max-width: 1600px) {
+            font-size: 1.5vw;
+            h4{
+                font-size: 2vw;
+            }
+        }
+        
+        @media screen and (max-width: 700px){
+            font-size: 2.2vw;
+            h4{
+                font-size: 3vw;
+            }
     }
-
+}
     .close{
         cursor: pointer;
     }
 
-    padding: 16px;
-    *{
-        margin: 2px;
-    }
 }
 
 .top-movies{
@@ -303,10 +428,19 @@ html{
     height: auto;
     position: fixed;
     margin: 12px;
-    padding: 12x;
-    left: 20%;
+    left: 22.5%;
     top: 5%;
     box-shadow: 2px 3px 10px 2px rgba(0,0,0,0.7);
+
+    @media screen and (max-width: 1600px) {
+        width: 80%;
+        left: 10%;    
+    }
+    
+    @media screen and (max-width: 700px){
+        width: 90%;
+        left: 5%;
+    }
 
 
 
@@ -327,6 +461,18 @@ html{
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 6px;
     margin:auto;
+
+    @media screen and (max-width: 1600px) {
+        grid-template-columns: 1fr 1fr 1fr;    
+    }
+
+    @media screen and (max-width: 1200px){
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (max-width: 700px){
+        grid-template-columns: 1fr;
+    }
 }
 
 .movieposter{
@@ -344,19 +490,9 @@ html{
     background-repeat: no-repeat;
     background-size: cover;
 }
-/* 
-img{
-    width: 100%;
-    height:auto;
-    margin:auto;
-    cursor: pointer;
-    transition: all 0.1s;
-    border: solid 3px rgba(0, 0, 0, 0);
-}
- */
+
 .imagecontainer:hover{
     transform:scale(1.07);
-    // border: solid 3px red;
 }
 
 .container{
@@ -387,13 +523,13 @@ img{
 
 @keyframes wobbletext{
     0%{
-        transform:translateX(26px) translateY(-62px);
+        transform:translateX(20%) translateY(-200%);
     }
     50%{
-        transform:translateX(34px) translateY(-70px);
+        transform:translateX(18%) translateY(-210%);
     }
     100%{
-        transform:translateX(26px) translateY(-62px);
+        transform:translateX(20%) translateY(-200%);
     }
 }
 
@@ -406,7 +542,7 @@ img{
 #curtain_container{
     display: inline;
     overflow: hidden;
-    margin-top: -10px;
+    margin-top: -5%;
 }
 
 
@@ -416,10 +552,10 @@ img{
     animation: curtainleft 4s ease 1;
     animation-fill-mode: forwards;
     animation-play-state: paused;
-    top:-1%;
+    top:-5%;
 
     width: 72.5%;
-    height: 102%;
+    height: 100%;
     img{
         width: 100%;
         height: 100%;
@@ -445,10 +581,10 @@ img{
     animation: curtainright 4s ease 1;
     animation-fill-mode: forwards;
     animation-play-state: paused;
-    top:-1%;
+    top:-5%;
 
     width: 72.5%;
-    height: 102%;
+    height: 100%;
     img{
         width: 100%;
         height: 100%;
@@ -500,22 +636,6 @@ animation: moveboardani 1.2s cubic-bezier(1,-0.18, 1, 1.11) 1;
 animation-fill-mode: backwards;
 animation-play-state: paused;
 
-}
-
-#scenefloor{
-    width: 100%;
-    height: 24%;
-    position: absolute;
-    bottom: 0;
-    background-image: url(../images/woodfloor.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-blend-mode: lighten;
-    // background-color: black;
-    animation: floorzoom 15s ease 1;
-    animation-delay: 2.5s;
-    animation-fill-mode: forwards;
 }
 
 #dirboard{
