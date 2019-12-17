@@ -1,0 +1,126 @@
+
+
+body{
+    margin: 0;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(189,1,1,1) 0%, rgba(0,0,0,1) 100%);
+}
+
+
+
+
+#curtain_container{
+    display: inline;
+    overflow: hidden;
+    margin-top: -10px;
+}
+
+
+.leftside{
+    overflow: hidden;
+    position: absolute;
+    animation: curtainleft 4s ease 1;
+    animation-fill-mode: forwards;
+    top:-1%;
+
+    width: 50%;
+    height: 80%;
+    img{
+        width: 100%;
+        height: 100%;
+
+    }
+}
+
+
+.rightside{
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    animation: curtainright 4s ease 1;
+    animation-fill-mode: forwards;
+    top:-1%;
+
+    width: 50%;
+    height: 80%;
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+
+@keyframes curtainleft {
+
+    50% {transform: skew(5deg) scale(0.98);}
+    90% {transform: skew(-3deg) scale(0.98);}
+    
+    100% {transform: skew(0deg) scale(1);
+    width: 20%;
+    margin-left: -22%;}  
+}
+
+@keyframes curtainright {
+
+    50% {transform: skew(-5deg) scale(0.98);}
+    90% {transform: skew(3deg) scale(0.98);}
+    100% {transform: skew(0deg) scale(1);
+    width: 20%;
+    margin-right: -22%;}  
+}
+
+@keyframes floorzoom {
+
+    100% {margin-bottom: -100%;
+          transform: scale(5);  }  
+}
+
+@keyframes moveboardani {
+
+   
+    90% {   transform: rotate(-22deg);
+            transform-origin: 10% 42%;
+            }
+    100% {  transform: rotate(0);
+        
+
+    }  
+}
+
+#boardanim{
+
+animation: moveboardani 1.2s cubic-bezier(1,-0.18, 1, 1.11) 1;
+animation-fill-mode: backwards;
+
+}
+
+#scenefloor{
+    width: 100%;
+    height: 24%;
+    position: absolute;
+    bottom: 0;
+    background-image: url(../images/woodfloor.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-blend-mode: lighten;
+    // background-color: black;
+    animation: floorzoom 15s ease 1;
+    animation-delay: 2.5s;
+    animation-fill-mode: forwards;
+}
+
+#dirboard{
+width: 45%;
+// min-width: 100px;
+position: absolute;
+top: 40%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+
+
+
+

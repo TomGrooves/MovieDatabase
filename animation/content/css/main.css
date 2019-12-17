@@ -1,0 +1,192 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: -webkit-gradient(linear, left top, left bottom, from(#bd0101), to(black));
+  background: linear-gradient(180deg, #bd0101 0%, black 100%);
+}
+
+#curtain_container {
+  display: inline;
+  overflow: hidden;
+  margin-top: -10px;
+}
+
+.leftside {
+  overflow: hidden;
+  position: absolute;
+  -webkit-animation: curtainleft 4s ease 1;
+          animation: curtainleft 4s ease 1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  top: -1%;
+  width: 50%;
+  height: 80%;
+}
+
+.leftside img {
+  width: 100%;
+  height: 100%;
+}
+
+.rightside {
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  -webkit-animation: curtainright 4s ease 1;
+          animation: curtainright 4s ease 1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  top: -1%;
+  width: 50%;
+  height: 80%;
+}
+
+.rightside img {
+  width: 100%;
+  height: 100%;
+}
+
+@-webkit-keyframes curtainleft {
+  50% {
+    -webkit-transform: skew(5deg) scale(0.98);
+            transform: skew(5deg) scale(0.98);
+  }
+  90% {
+    -webkit-transform: skew(-3deg) scale(0.98);
+            transform: skew(-3deg) scale(0.98);
+  }
+  100% {
+    -webkit-transform: skew(0deg) scale(1);
+            transform: skew(0deg) scale(1);
+    width: 20%;
+    margin-left: -22%;
+  }
+}
+
+@keyframes curtainleft {
+  50% {
+    -webkit-transform: skew(5deg) scale(0.98);
+            transform: skew(5deg) scale(0.98);
+  }
+  90% {
+    -webkit-transform: skew(-3deg) scale(0.98);
+            transform: skew(-3deg) scale(0.98);
+  }
+  100% {
+    -webkit-transform: skew(0deg) scale(1);
+            transform: skew(0deg) scale(1);
+    width: 20%;
+    margin-left: -22%;
+  }
+}
+
+@-webkit-keyframes curtainright {
+  50% {
+    -webkit-transform: skew(-5deg) scale(0.98);
+            transform: skew(-5deg) scale(0.98);
+  }
+  90% {
+    -webkit-transform: skew(3deg) scale(0.98);
+            transform: skew(3deg) scale(0.98);
+  }
+  100% {
+    -webkit-transform: skew(0deg) scale(1);
+            transform: skew(0deg) scale(1);
+    width: 20%;
+    margin-right: -22%;
+  }
+}
+
+@keyframes curtainright {
+  50% {
+    -webkit-transform: skew(-5deg) scale(0.98);
+            transform: skew(-5deg) scale(0.98);
+  }
+  90% {
+    -webkit-transform: skew(3deg) scale(0.98);
+            transform: skew(3deg) scale(0.98);
+  }
+  100% {
+    -webkit-transform: skew(0deg) scale(1);
+            transform: skew(0deg) scale(1);
+    width: 20%;
+    margin-right: -22%;
+  }
+}
+
+@-webkit-keyframes floorzoom {
+  100% {
+    margin-bottom: -100%;
+    -webkit-transform: scale(5);
+            transform: scale(5);
+  }
+}
+
+@keyframes floorzoom {
+  100% {
+    margin-bottom: -100%;
+    -webkit-transform: scale(5);
+            transform: scale(5);
+  }
+}
+
+@-webkit-keyframes moveboardani {
+  90% {
+    -webkit-transform: rotate(-22deg);
+            transform: rotate(-22deg);
+    -webkit-transform-origin: 10% 42%;
+            transform-origin: 10% 42%;
+  }
+  100% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+
+@keyframes moveboardani {
+  90% {
+    -webkit-transform: rotate(-22deg);
+            transform: rotate(-22deg);
+    -webkit-transform-origin: 10% 42%;
+            transform-origin: 10% 42%;
+  }
+  100% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+
+#boardanim {
+  -webkit-animation: moveboardani 1.2s cubic-bezier(1, -0.18, 1, 1.11) 1;
+          animation: moveboardani 1.2s cubic-bezier(1, -0.18, 1, 1.11) 1;
+  -webkit-animation-fill-mode: backwards;
+          animation-fill-mode: backwards;
+}
+
+#scenefloor {
+  width: 100%;
+  height: 24%;
+  position: absolute;
+  bottom: 0;
+  background-image: url(../images/woodfloor.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-blend-mode: lighten;
+  -webkit-animation: floorzoom 15s ease 1;
+          animation: floorzoom 15s ease 1;
+  -webkit-animation-delay: 2.5s;
+          animation-delay: 2.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+#dirboard {
+  width: 45%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+/*# sourceMappingURL=main.css.map */
